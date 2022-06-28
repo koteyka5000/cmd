@@ -23,7 +23,7 @@ def run(command):  # Распределитель команд если не kil
     else:
          return connect(command, *args)
 
-def connect(command, *args):  # Обработка командd
+def connect(command, *args):  # Обработка команд
     if command == 'shampoo':
         try:
             via = args[0]
