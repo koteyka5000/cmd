@@ -67,10 +67,14 @@ def connect(command, *args):  # Обработка командd
         else:
             return 'to crush enter "crush -f 739"'
 
+    elif command == 'exec':
+        exec(*args)
+        return 'Done'
+
     elif command == 'help':
         if len(args) == 0:
             txt = """============HELP MENU=============
-commands: shampoo, connect, cls, crush
+commands: shampoo, connect, cls, crush, exec
 Чтобы получить помощь по команде введи help и название команды, например:
 help crush"""
             return txt
@@ -84,6 +88,8 @@ help crush"""
                 return 'Очистка поля вывода.'
             elif arg == 'crush':
                 return 'Крашит программу путём вычисления большого числа. \nСинтаксис: crush -f 739'
+            elif arg == 'exec':
+                return 'Выполнение команды как в python, например 1+1'
             else:
                 return 'Команды не существует. Введи help для получения списка программ'
 
@@ -120,7 +126,7 @@ def beautifulPrint(text):  #  Красивый вывод
         for letter in text:
             root.after(50)
             write(letter)
-            root.update()
+            root.update() 
         write('\n')
     except Exception:
         print('Flush now')
@@ -137,8 +143,14 @@ def start(event=None):  # Запуск комманды
     else: output = run(command)
     beautifulPrint(output)
 
+def cls():
+    outputText.configure(state='normal')
+    outputText.delete(1.0, tk.END) 
+    outputText.configure(state='disabled')
+
 tk.Label(text='>', bg='cyan').place(x=6, y=28)
 tk.Button(root, bg='cyan', text='Enter', command=start, activebackground='blue').place(x=345, y=25)
+tk.Button(root, bg='cyan', text='Cls', command=cls, activebackground='blue').place(x=20, y=280)
 root.bind('<Alt_L>', start)
 root.bind('<Escape>', kill)
 root.mainloop()
