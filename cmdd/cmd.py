@@ -3,8 +3,8 @@ isImportedCommands = True
 try:  import commands
 except:
     print('===FATAL===\nНету файла с командами.\n \
-     Его нужно скачать и поместить в одну папку \
-        с этим файлом!')
+Его нужно скачать и поместить в одну папку \
+с этим файлом!')
     isImportedCommands = False
 
 root = tk.Tk()
@@ -25,6 +25,10 @@ inputText.place(x=20, y=30)
 def run(command):  # Подготовка к обработке
     command = command.split()
     command, *args = command
+    if not isImportedCommands:
+        return '===FATAL===\nНету файла с командами.\n\
+Его нужно скачать и поместить в одну папку \
+с этим файлом!\nэх'
     return connect(command, *args)
 
 def connect(command, *args):  # Обработка команд
@@ -71,7 +75,4 @@ tk.Button(root, bg='cyan', text='Cls', command=cls, activebackground='blue').pla
 root.bind('<Alt_L>', start)
 root.bind('<Escape>', kill)
 
-if not isImportedCommands:  write('===FATAL===\nНету файла с командами.\n \
-     Его нужно скачать и поместить в одну папку \
-        с этим файлом!\nэх')
 root.mainloop()

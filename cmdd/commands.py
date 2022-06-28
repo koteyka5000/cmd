@@ -87,3 +87,10 @@ def checkCommand(cmd, *args):  # Проверка правильности вв�
 
     else:
         return 'Access Denied:\nSystem func!'
+
+def flushNow(*args):
+    print('Flush now')
+    return 'Flush now'
+
+if __name__ == "__main__":
+    print('\n=\n=\n=\n=\n=========================\nStart programm in cmd.py')
