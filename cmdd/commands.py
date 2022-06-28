@@ -39,12 +39,15 @@ def exec(*args):
     exec(*args)
     return 'Done'
 
+def terminate(*args):
+    return 'Terminated'
+
 def help(*args):
     if len(args) == 0:
         txt = """============HELP MENU=============
-        commands: shampoo, connect, cls, crush, exec
-        Чтобы получить помощь по команде введи help и название команды, например:
-        help crush"""
+commands: shampoo, connect, cls, crush, exec
+Чтобы получить помощь по команде введи help и название команды, например:
+help crush"""
         return txt
     else:
         arg = args[0]
